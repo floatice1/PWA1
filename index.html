@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello PWA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="HelloApp">
+</head>
+<body>
+<div class="container">
+    <h1 id="greeting">Loading...</h1>
+</div>
+
+<script src="script.js"></script>
+<script>
+    // Register the Service Worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js')
+            .then((reg) => {
+                console.log('Service Worker Registered', reg);
+            })
+            .catch((err) => {
+                console.error('Service Worker Registration Failed', err);
+            });
+    }
+</script>
+</body>
+</html>
